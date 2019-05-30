@@ -8,8 +8,8 @@ Spark:
 
 Master:
   Name: master
-  Image: "k8s.gcr.io/spark"
-  ImageTag: "1.5.1_v3"
+  Image: "sblcook/spark"
+  ImageTag: "2.4.3"
   Replicas: 1
   Component: "spark-master"
   Cpu: "100m"
@@ -27,7 +27,7 @@ WebUi:
 
 Worker:
   Name: worker
-  Image: "k8s.gcr.io/spark"
+  Image: "sblcook/spark"
   ImageTag: "1.5.1_v3"
   Replicas: 3
   Component: "spark-worker"
@@ -46,7 +46,7 @@ Worker:
 Zeppelin:
   Name: zeppelin
   Image: "apache/zeppelin"
-  ImageTag: "0.7.3"
+  ImageTag: "0.8.1"
   Replicas: 1
   Component: "zeppelin"
   Cpu: "100m"
