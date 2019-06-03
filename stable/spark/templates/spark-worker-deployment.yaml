@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ template "worker-fullname" . }}
@@ -25,7 +25,7 @@ spec:
       containers:
         - name: {{ template "worker-fullname" . }}
           image: "{{ .Values.Worker.Image }}:{{ .Values.Worker.ImageTag }}"
-          args: ["sparkworker"]
+          command: ["{{ .Values.Spark.Path }}/sbin/start-slave.sh", "spark://{{ template "master-fullname" . }}:{{ .Values.Master.ServicePort }}", "-p", "8081"]
           ports:
             - containerPort: {{ .Values.Worker.ContainerPort }}
           resources:
